@@ -45,6 +45,7 @@ resource "aws_vpn_connection" "this" {
   tunnel1_phase2_encryption_algorithms = each.value.tunnel1_phase2_encryption_algorithms
   tunnel1_phase2_integrity_algorithms  = each.value.tunnel1_phase2_integrity_algorithms
   tunnel1_phase2_lifetime_seconds      = each.value.tunnel1_phase2_lifetime_seconds
+
   tunnel1_log_options {
     cloudwatch_log_options {
       log_enabled       = true
@@ -52,6 +53,7 @@ resource "aws_vpn_connection" "this" {
       log_output_format = each.value.cloudwatch_log_format
     }
   }
+
   tunnel2_startup_action               = each.value.tunnel1_startup_action
   tunnel2_preshared_key                = each.value.tunnel1_preshared_key
   tunnel2_ike_versions                 = each.value.tunnel1_ike_versions
@@ -64,6 +66,7 @@ resource "aws_vpn_connection" "this" {
   tunnel2_phase2_encryption_algorithms = each.value.tunnel1_phase2_encryption_algorithms
   tunnel2_phase2_integrity_algorithms  = each.value.tunnel1_phase2_integrity_algorithms
   tunnel2_phase2_lifetime_seconds      = each.value.tunnel1_phase2_lifetime_seconds
+
   tunnel2_log_options {
     cloudwatch_log_options {
       log_enabled       = true
@@ -71,6 +74,7 @@ resource "aws_vpn_connection" "this" {
       log_output_format = each.value.cloudwatch_log_format
     }
   }
+
   tags = {
     Name = each.key
   }
